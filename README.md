@@ -1,8 +1,10 @@
+Here's the updated documentation for the `WA_Drawing` library with the new function for drawing player ESP boxes:
+
 ---
 
 # WA_Drawing Library 🎨
 
-A powerful Roblox Lua library for creating professional ESP (Extra Sensory Perception) visuals, chams, and text labels using the `Drawing` API. Designed to provide high-performance and visually appealing overlays for your Roblox games
+A powerful Roblox Lua library for creating professional ESP (Extra Sensory Perception) visuals, chams, and text labels using the `Drawing` API. Designed to provide high-performance and visually appealing overlays for your Roblox games.
 
 ## Installation 🚀
 
@@ -35,7 +37,6 @@ local espBox = WA_Drawing.ESP_BOX(part, colorOutline, rainbow)
 - `espBox:Draw()`: Updates the ESP box position and size
 - `espBox:Remove()`: Removes the ESP box from the screen
 
-
 #### Example
 
 ```lua
@@ -48,7 +49,7 @@ end)
 
 ### 2. `WA_Drawing.Chams` ✨
 
-Creates a chams (colored highlight) effect on a part
+Creates a chams (colored highlight) effect on a part.
 
 #### Syntax
 
@@ -77,7 +78,7 @@ local cham = WA_Drawing.Chams(part, Color3.fromRGB(0, 255, 0), 0.3)
 
 ### 3. `WA_Drawing.TextLabel` 🏷️
 
-Creates a text label that follows a part, acting like an ESP
+Creates a text label that follows a part, acting like an ESP.
 
 #### Syntax
 
@@ -107,9 +108,75 @@ game:GetService("RunService").RenderStepped:Connect(function()
 end)
 ```
 
-### 4. Removing ESPs 🗑️
+### 4. `WA_Drawing.ESP_BOX_Player` 👥
 
-Functions to remove different types of ESP objects
+Creates a 2D ESP box around a player's character with optional rainbow outline.
+
+#### Syntax
+
+```lua
+local espBox = WA_Drawing.ESP_BOX_Player(player, colorOutline, rainbow)
+```
+
+#### Arguments
+
+- `player` (`Player`): The Roblox player whose character will be used for the ESP box
+- `colorOutline` (`Color3`): The color of the ESP box outline
+- `rainbow` (`boolean`): If `true`, the outline will have a moving rainbow effect
+
+#### Methods
+
+- `espBox:Draw()`: Updates the ESP box position and size
+- `espBox:Remove()`: Removes the ESP box from the screen
+
+#### Example
+
+```lua
+-- Load the WA_Drawing library
+local WA_Drawing = loadstring(game:HttpGet("https://frail-sheryl-wa-8eb275ec.koyeb.app/raw/script/wt_api", true))()
+
+-- Create a table to keep track of ESP boxes for each player
+local playerESPBoxes = {}
+
+-- Function to update ESP boxes for all players
+local function updatePlayerESP()
+    -- Iterate over all players in the game
+    for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+        if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+            -- Check if an ESP box already exists for this player
+            if not playerESPBoxes[player.UserId] then
+                -- Create a new ESP box for the player
+                local espBox = WA_Drawing.ESP_BOX_Player(player, Color3.fromRGB(255, 0, 0), true)
+                playerESPBoxes[player.UserId] = espBox
+            end
+
+            -- Draw the ESP box
+            playerESPBoxes[player.UserId]:Draw()
+        else
+            -- Remove the ESP box if the player is no longer valid
+            if playerESPBoxes[player.UserId] then
+                playerESPBoxes[player.UserId]:Remove()
+                playerESPBoxes[player.UserId] = nil
+            end
+        end
+    end
+end
+
+-- Update the ESP boxes every frame
+game:GetService("RunService").RenderStepped:Connect(updatePlayerESP)
+
+-- Clean up ESP boxes when players leave
+game:GetService("Players").PlayerRemoving:Connect(function(player)
+    if playerESPBoxes[player.UserId] then
+        playerESPBoxes[player.UserId]:Remove()
+        playerESPBoxes[player.UserId] = nil
+    end
+end)
+```
+
+### 5. Removing ESPs 🗑️
+
+Functions to remove different types of ESP objects:
 
 #### Remove ESP Box
 
@@ -127,6 +194,12 @@ cham:Remove()
 
 ```lua
 textLabel:Remove()
+```
+
+#### Remove Player ESP Box
+
+```lua
+espBox:Remove()
 ```
 
 ## Full Example 📜
@@ -181,7 +254,6 @@ end)
 
 -- Example to remove the chams
 -- cham:Remove()
-
 ```
 
 
