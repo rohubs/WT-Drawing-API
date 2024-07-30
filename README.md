@@ -2,7 +2,7 @@
 
 # WA_Drawing Library 🎨
 
-A powerful Roblox Lua library for creating professional ESP (Extra Sensory Perception) visuals, chams, and text labels using the `Drawing` API. Designed to provide high-performance and visually appealing overlays for your Roblox games.
+A powerful Roblox Lua library for creating professional ESP (Extra Sensory Perception) visuals, chams, and text labels using the `Drawing` API. Designed to provide high-performance and visually appealing overlays for your Roblox games
 
 ## Installation 🚀
 
@@ -16,7 +16,7 @@ local WA_Drawing = loadstring(game:HttpGet("https://frail-sheryl-wa-8eb275ec.koy
 
 ### 1. `WA_Drawing.ESP_BOX` 📦
 
-Creates a professional 2D ESP box around a part with optional rainbow outline.
+Creates a 2D ESP box around a part with optional rainbow outline.
 
 #### Syntax
 
@@ -26,15 +26,15 @@ local espBox = WA_Drawing.ESP_BOX(part, colorOutline, rainbow)
 
 #### Arguments
 
-- `part` (`Instance`): The Roblox part to attach the ESP box to.
-- `colorOutline` (`Color3`): The color of the ESP box outline.
-- `rainbow` (`boolean`): If `true`, the outline will have a moving rainbow effect.
+- `part` (`Instance`): The Roblox part to attach the ESP box to
+- `colorOutline` (`Color3`): The color of the ESP box outline
+- `rainbow` (`boolean`): If `true`, the outline will have a moving rainbow effect
 
 #### Methods
 
-- `espBox:Draw()`: Updates the ESP box position and size.
-- `espBox:Remove()`: Removes the ESP box from the screen.
-
+- `espBox:Draw()`: Updates the ESP box position and size
+- `espBox:Remove()`: Removes the ESP box from the screen
+- 
 #### Example
 
 ```lua
@@ -47,7 +47,7 @@ end)
 
 ### 2. `WA_Drawing.Chams` ✨
 
-Creates a chams (colored highlight) effect on a part.
+Creates a chams (colored highlight) effect on a part
 
 #### Syntax
 
@@ -57,13 +57,13 @@ local cham = WA_Drawing.Chams(part, color, transparency)
 
 #### Arguments
 
-- `part` (`Instance`): The Roblox part to apply the chams effect to.
-- `color` (`Color3`): The color of the chams.
-- `transparency` (`number`): The transparency of the chams (0 to 1).
+- `part` (`Instance`): The Roblox part to apply the chams effect to
+- `color` (`Color3`): The color of the chams
+- `transparency` (`number`): The transparency of the chams (0 to 1)
 
 #### Methods
 
-- `cham:Remove()`: Removes the chams effect from the part.
+- `cham:Remove()`: Removes the chams effect from the part
 
 #### Example
 
@@ -86,15 +86,15 @@ local textLabel = WA_Drawing.TextLabel(text, part, size, color)
 
 #### Arguments
 
-- `text` (`string`): The text to display.
-- `part` (`Instance`): The Roblox part to attach the text label to.
-- `size` (`number`): The size of the text.
-- `color` (`Color3`): The color of the text.
+- `text` (`string`): The text to display
+- `part` (`Instance`): The Roblox part to attach the text label to
+- `size` (`number`): The size of the text
+- `color` (`Color3`): The color of the text
 
 #### Methods
 
-- `textLabel:Draw()`: Updates the text label position.
-- `textLabel:Remove()`: Removes the text label from the screen.
+- `textLabel:Draw()`: Updates the text label position
+- `textLabel:Remove()`: Removes the text label from the screen
 
 #### Example
 
@@ -108,7 +108,7 @@ end)
 
 ### 4. Removing ESPs 🗑️
 
-Functions to remove different types of ESP objects.
+Functions to remove different types of ESP objects
 
 #### Remove ESP Box
 
