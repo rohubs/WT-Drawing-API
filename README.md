@@ -34,7 +34,8 @@ local espBox = WA_Drawing.ESP_BOX(part, colorOutline, rainbow)
 
 - `espBox:Draw()`: Updates the ESP box position and size
 - `espBox:Remove()`: Removes the ESP box from the screen
-- 
+
+
 #### Example
 
 ```lua
