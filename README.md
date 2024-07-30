@@ -144,29 +144,44 @@ part.Position = Vector3.new(0, 5, 0)
 part.Anchored = true
 part.Parent = workspace
 
+-- Define colors for the ESP box
+local colorOutline = Color3.fromRGB(255, 0, 0)  -- Red outline
+
 -- Create the ESP box for the part with a rainbow effect
-local espBox = WA_Drawing.ESP_BOX(part, Color3.fromRGB(255, 0, 0), true)
+local espBox = WA_Drawing.ESP_BOX(part, colorOutline, true)
+
+-- Draw the ESP box initially
+espBox:Draw()
+
+-- Update the ESP box continuously
 game:GetService("RunService").RenderStepped:Connect(function()
     espBox:Draw()
 end)
 
 -- Create chams for the part
-local cham = WA_Drawing.Chams(part, Color3.fromRGB(0, 255, 0), 0.3)
+local cham = WA_Drawing.Chams(part, Color3.fromRGB(0, 255, 0), 0.3) -- Green cham with 30% transparency
+
+-- To remove the cham later, call cham:Remove()
 
 -- Create a professional text label attached to the part
-local textLabel = WA_Drawing.TextLabel("Hello, World!", part, 20, Color3.fromRGB(255, 255, 255))
+local textLabel = WA_Drawing.TextLabel("Hello, World!", part, 20, Color3.fromRGB(255, 255, 255)) -- White text
+
+-- Update the text label position
 game:GetService("RunService").RenderStepped:Connect(function()
     textLabel:Draw()
 end)
 
+-- To remove the text label later, call textLabel:Remove()
+
 -- Example to remove the ESP box
 -- espBox:Remove()
+
+-- Example to remove the text label
+-- textLabel:Remove()
 
 -- Example to remove the chams
 -- cham:Remove()
 
--- Example to remove the text label
--- textLabel:Remove()
 ```
 
 
